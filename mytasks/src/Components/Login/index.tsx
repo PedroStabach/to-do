@@ -1,9 +1,11 @@
 import { FaCalendarCheck } from "react-icons/fa";
 import { useState } from "react";
 export function Account () {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    //funcao login
     async function handleSubmit (e : React.FormEvent) {
         e.preventDefault();
         setError("");
@@ -30,9 +32,9 @@ export function Account () {
             <h1>MyTasks</h1>
             <h2>Organize seu dia, conquiste seus objetivos.</h2>
             
-            <form action="">
-                <input type="text" value={email}/>
-                <input type="password" />
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 <FaCalendarCheck />
                 <button type="submit">Entrar</button>
                 <button>Criar Conta</button>
